@@ -53,8 +53,9 @@ public class Main {
             } else {
                 System.out.println("Скачайте облегчённую версию приложение для Андройд по ссылке:");
             }
-        } else
+        } else {
             System.out.println("Продай свой тапок и купи нормальный телефон");
+        }
 
     }
 
@@ -74,7 +75,7 @@ public class Main {
         int clientsDevisesYear = 2015;
         determineTheOSAndAgeOfTheDevice(clientOS,clientsDevisesYear);
     }
-    public static void determinateDeliveryTime(int deliveryDistance, int deliveryTime) {
+    public static int determinateDeliveryTime(int deliveryDistance) {
         //В банке для клиентов организовывается доставка карт на дом. Чтобы известить клиента о том, когда будет доставлена его карта,
         // нужно знать расстояние от офиса до адреса доставки.
         //Правила доставки такие:
@@ -84,26 +85,24 @@ public class Main {
         //Свыше 100 км доставки нет.
         //То есть с каждым следующим интервалом доставки срок увеличивается на 1 день.
         //Напишите программу, которая выдает сообщение в консоль: "Потребуется дней: " + срок доставки.
-
+        int deliveryTime = 1;
         if (deliveryDistance <= 20) {
-            System.out.println("Потребуется дней " + deliveryTime);
         } else if (deliveryDistance <= 60) {
             deliveryTime++;
-            System.out.println("Потребуется дней " + deliveryTime);
         } else if (deliveryDistance <= 100) {
             deliveryTime++;
-            System.out.println("Потребуется дней " + deliveryTime);
-        } else System.out.println("Доставки нет");
+        } else  deliveryTime = -1;
+        return deliveryTime;
     }
-
     public static void task3() {
         //Возвращаемся к задаче на расчет дней доставки банковской карты.
         //Ваша задача — доработать код, а именно написать метод, который на вход принимает дистанцию и возвращает итоговое количество дней доставки.
 
         System.out.println("\nЗадача_3");
         int deliveryDistance = 110;
-        int deliveryTime = 1;
-        determinateDeliveryTime(deliveryDistance, deliveryTime);
+        deliveryDistance = determinateDeliveryTime(deliveryDistance);
+        if (deliveryDistance >= 0) {
+            System.out.println("Время доставки " + deliveryDistance);
+        } else System.out.println("Доставки нет");
     }
-
 }
